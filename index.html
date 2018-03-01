@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+		<title>誉景答题季 学霸闹元宵</title>
+		<!--<link rel="stylesheet" type="text/css" href="css/animate.css"/>-->
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.audio {
+				position: fixed;
+				top: 14px;
+				right: 14px;
+				z-index: 1000;
+			}
+			
+			.audio .audioImg {
+				display: block;
+				width: 24px;
+				height: 24px;
+			}
+			
+			.audio .audioImg.turn {
+				animation: turn 12s ease infinite;
+				animation-fill-mode: forwards;
+			}
+			
+			.audio .audioSource {
+				display: none;
+			}
+			
+			@keyframes turn {
+				0% {
+					transform: rotate(1);
+				}
+				100% {
+					transform: rotate(1turn);
+				}
+			}
+			
+			@keyframes pulse {
+				from {
+					-webkit-transform: scale3d(1, 1, 1);
+					transform: scale3d(1, 1, 1);
+				}
+				50% {
+					-webkit-transform: scale3d(1.05, 1.05, 1.05);
+					transform: scale3d(1.05, 1.05, 1.05);
+				}
+				to {
+					-webkit-transform: scale3d(1, 1, 1);
+					transform: scale3d(1, 1, 1);
+				}
+			}
+			
+			.pulse {
+				-webkit-animation-name: pulse;
+				animation: pulse 1s infinite;
+			}
+			/*.bg_view {
+				background: url(img/0226地图1.jpg) no-repeat 100% center;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				background-size: 100% 100%;
+			}
+			*/
+			
+			.page,
+			.share_bg {
+				position: absolute;
+				display: flex;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.share_bg {
+				display: none;
+				z-index: 999;
+				width: 100%;
+				height: 100%;
+			}
+			
+			.pop_view {
+				position: absolute;
+				display: flex;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.start,
+			.share {
+				position: absolute;
+				bottom: 17%;
+				width: 60%;
+				height: 50px;
+				z-index: 999;
+			}
+			
+			.page_bg_img {
+				width: 100%;
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				height: 100%;
+			}
+			
+			.question {
+				position: absolute;
+				width: 60%;
+				height: 22%;
+				bottom: 8%;
+				z-index: 998;
+			}
+			
+			.question>div {
+				height: 25%;
+				width: 100%;
+			}
+			
+			.true_a,
+			.false_a {
+				width: 100%;
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.false_a {
+				background: rgba(255, 255, 255, 0.5);
+			}
+			
+			.true_img {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.next {
+				position: absolute;
+				bottom: 15%;
+				width: 70%;
+				height: 50px;
+				z-index: 999;
+			}
+			
+			.false_img {
+				width: 60%;
+				height: 30%;
+				display: none;
+			}
+			
+			.onse_more {
+				width: 50%;
+				height: 50px;
+				position: absolute;
+				z-index: 999;
+				top: 54%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="bg_view">
+			<div class="audio">
+				<img id="ts" class="audioImg turn" src="./img/music.png">
+				<audio class="audioSource" loop>
+					<source src="./img/music.mp3" type="audio/mp3">
+					<p>您的浏览器不支持Audio标签,请点击
+						<a href="./img/music.mp3">这里</a>直接播放</p>
+				</audio>
+			</div>
+			<!--首页-->
+			<div class="page index page_0">
+				<img class="page_bg_img page_bg_0" src="img/bg_0.jpg" />
+				<div class="start">
+
+				</div>
+			</div>
+			<!--第一题-->
+			<div class="page page_1">
+				<img class="page_bg_img page_bg_1" src="img/bg_1.jpg" />
+				<div class="question question_1">
+					<div class="true">
+
+					</div>
+					<div class="false_0">
+
+					</div>
+					<div class="false_1">
+
+					</div>
+					<div class="false_2">
+
+					</div>
+				</div>
+			</div>
+			<!--第二题-->
+			<div class="page page_2">
+				<img class="page_bg_img page_bg_2" src="img/bg_2.jpg" />
+				<div style="bottom:4%;left: 15%;" class="question question_1">
+					<div class="false_0">
+
+					</div>
+					<div class="true">
+
+					</div>
+					<div class="false_1">
+
+					</div>
+					<div class="true">
+
+					</div>
+				</div>
+			</div>
+			<!--第三题-->
+			<div class="page page_3">
+				<img class="page_bg_img page_bg_3" src="img/bg_3.jpg" />
+				<div style="bottom: 10%;" class="question question_1">
+					<div class="true">
+
+					</div>
+					<div class="false_0">
+
+					</div>
+					<div class="false_1">
+
+					</div>
+					<div class="false_2">
+
+					</div>
+				</div>
+			</div>
+			<!--第四题-->
+			<div class="page page_4">
+				<img class="page_bg_img page_bg_4" src="img/bg_4.jpg" />
+				<div style="bottom: 6%;" class="question question_4">
+					<div class="false_0">
+
+					</div>
+					<div class="false_1">
+
+					</div>
+					<div class="true">
+
+					</div>
+					<div class="false_2">
+
+					</div>
+				</div>
+			</div>
+			<!--第五题-->
+			<div class="page page_5">
+				<img class="page_bg_img page_bg_5" src="img/bg_5.jpg" />
+				<div style="bottom:9% ;width: 90%;" class="question question_5">
+					<div class="false_0">
+
+					</div>
+					<div class="false_1">
+
+					</div>
+					<div class="false_2">
+
+					</div>
+					<div class="true">
+
+					</div>
+				</div>
+			</div>
+			<div class="page result page_6">
+				<img class="page_bg_img page_bg_6" src="img/bg_6.jpg" />
+				<div class="share">
+
+				</div>
+			</div>
+			<img id="share_bg" class="share_bg" src="img/m123.png" />
+		</div>
+		<div class="pop_view">
+			<!--第一题弹窗-->
+			<div class="pop pop_0">
+				<div class="true_a">
+					<img class="true_img" src="img/true_1.jpg" />
+					<div class="next next_0">
+
+					</div>
+				</div>
+				<div class="false_a">
+					<img class="false_img" src="" />
+					<div class="onse_more">
+
+					</div>
+				</div>
+			</div>
+			<!--第二题弹窗-->
+			<div class="pop pop_1">
+				<div class="true_a">
+					<img class="true_img" src="img/true_2.jpg" />
+					<div class="next next_1">
+
+					</div>
+				</div>
+				<div class="false_a">
+					<img class="false_img" src="" />
+					<div class="onse_more">
+
+					</div>
+				</div>
+			</div>
+			<!--第三题弹窗-->
+			<div class="pop pop_2">
+				<div class="true_a">
+					<img class="true_img" src="img/true_3.jpg" />
+					<div class="next next_2">
+
+					</div>
+				</div>
+				<div class="false_a">
+					<img class="false_img" src="" />
+					<div class="onse_more">
+
+					</div>
+				</div>
+			</div>
+			<!--第四题弹窗-->
+			<div class="pop pop_3">
+				<div class="true_a">
+					<img class="true_img" src="img/true_4.jpg" />
+					<div class="next next_3">
+
+					</div>
+				</div>
+				<div class="false_a">
+					<img class="false_img" src="" />
+					<div class="onse_more">
+
+					</div>
+				</div>
+			</div>
+			<!--第五题弹窗-->
+			<div class="pop pop_4">
+				<div class="true_a">
+					<img class="true_img" src="img/true_5.jpg" />
+					<div class="next next_4">
+
+					</div>
+				</div>
+				<div class="false_a">
+					<img class="false_img" src="" />
+					<div class="onse_more">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script src="js/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="./js/wxfx.js"></script>
+<script type="text/javascript">
+	//判断是否为微信服务器
+	function isWeiXin() {
+		var ua = window.navigator.userAgent.toLowerCase();
+		return ua.match(/MicroMessenger/i) == 'micromessenger';
+	}
+
+	// 添加文档onload事件
+	document.addEventListener(isWeiXin() ? 'WeixinJSBridgeReady' : 'DOMContentLoaded', function onBridgeReady(event) {
+		music.play();
+	}, false);
+
+	//音乐控制
+	var music = document.querySelector('.audioSource');
+	var audio = document.querySelector(".audioImg");
+	var swich = true;
+	audio.addEventListener("click", function() {
+		if(swich) {
+			music.pause();
+			swich = false;
+			audio.classList.remove("turn");
+		} else {
+			music.play();
+			swich = true;
+			audio.classList.add("turn");
+		}
+	})
+
+	//给背景页面加层级防止定位干扰
+	for(let i = 0; i < 7; i++) {
+		$(".page_" + i).css('z-index', 900 - i)
+		$(".page_" + (i + 1)).css('display', 'none')
+		$(".page_bg_" + i).css('z-index', 900 - i)
+		$(".next_" + i).click(_ => {
+			$(".true_a").fadeOut()
+			$(".page_" + (i + 1)).fadeOut('fast')
+			$(".page_" + (i + 2)).fadeIn('fast')
+		})
+	}
+	//给弹窗页面加层级
+	for(let i = 0; i < 4; i++) {
+		$(".pop_" + i).css('z-index', 1000 - i)
+	}
+	//点击开始答题
+	$(".start").click(_ => {
+		$(".index").fadeOut('fast')
+		$(".page_1").fadeIn('fast')
+	})
+	//点击正确答案显示正确弹窗
+	for(let i = 1; i < 6; i++) {
+		$(".pop_view").find('.pop_' + (i - 1)).find('.true_a').css('display', 'none')
+		$(".pop_view").find('.pop_' + (i - 1)).find('.false_a').css('display', 'none')
+		if(i != 5) {
+			$(".page_" + i).find('.true').click(_ => {
+				$(".pop_" + (i - 1)).find('.true_a').fadeIn('fast')
+			})
+		} else {
+			$(".page_" + i).find('.true').click(_ => {
+				$(".page_" + (i)).fadeOut('fast')
+				$(".page_" + (i + 1)).fadeIn('fast')
+			})
+		}
+		//除去第二项多选的点击错误答案时执行
+		if(i != 2) {
+			for(let j = 0; j < 3; j++) {
+				$(".page_" + i).find('.false_' + j).click(_ => {
+					$(".pop_" + (i - 1)).find('.false_a').fadeIn('fast')
+					$(".pop_" + (i - 1) + ' .false_a img').fadeIn('fast').attr('src', 'img/false' + i + '_' + (j + 1) + '.png')
+				})
+			}
+		} else {
+			//第二项的点击错误答案执行
+			for(let K = 0; K < 2; K++) {
+				$(".page_" + i).find('.false_' + K).click(_ => {
+					$(".pop_" + (i - 1)).find('.false_a').fadeIn('fast')
+					$(".pop_" + (i - 1) + ' .false_a img').fadeIn('fast').attr('src', 'img/false' + i + '_' + (K + 1) + '.png')
+				})
+			}
+		}
+	}
+	//再来一次点击函数
+	$(".onse_more").click(_ => {
+		$(".false_a").fadeOut('fast')
+	})
+
+	//点击分享
+	$(".share").click(_ => {
+		$(".share_bg").css('display', 'block')
+	})
+
+	//点击取消分享页面
+	$(".share_bg").click(_ => {
+		$('#share_bg').css('display', 'none')
+	})
+
+	// 微信端分享
+	$.ajax({
+		url: "http://h5.dazhiad.com/weixin_api/api.php",
+		type: "GET",
+		cache: !1,
+		data: {
+			url: location.href
+		},
+		dataType: "jsonp",
+		success: function(o) {
+			wxfx(
+				[
+					'誉景答题季 学霸闹元宵',
+					'泰山·誉景，祝您与家人元宵节快乐！',
+					location.href,
+					location.href.slice(0, location.href.lastIndexOf('/') + 1) + 'img/favicon.ico'
+				], o)
+		},
+		error: function() {}
+	});
+</script>
